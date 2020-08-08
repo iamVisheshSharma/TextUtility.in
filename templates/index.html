@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>I AM IN TODO</h1>
+    {% for todo_item in all_item%}
+    <li>{{ todo_item.content }}</li>
+    <form action="/tododelete/{{todo_item.id}}" method="post">{% csrf_token %}
+
+        <input type="submit" value="Delete">
+    </form>
+    {% endfor %}
+    <form action="/todoadd/" method="post">{% csrf_token %}
+        <input type="text" name="content" id="content">
+        <input type="submit value="Add">
+    </form>
+</body>
+</html>
